@@ -8,7 +8,7 @@ class update_qty_on_hand(models.Model):
     _inherit = 'stock.inventory'
 
     # only keep records appearing in a bill of material (components, raw materials)
-    for records.filtered("bom_line_ids","!=",False):
+    if records.filter(lambda r: r.bom_line_ids!=False):
         inventory_quantity = 100
 
 
